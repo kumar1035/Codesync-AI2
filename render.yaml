@@ -27,7 +27,7 @@ services:
     plan: free
     dockerfilePath: ./services/api-gateway/Dockerfile
     dockerContext: ./services/api-gateway
-    envVarGroups:
+    envVarGroupNames:
       - codesync-secrets
     envVars:
       - key: PORT
@@ -53,7 +53,7 @@ services:
     plan: free
     dockerfilePath: ./services/auth-service/Dockerfile
     dockerContext: ./services/auth-service
-    envVarGroups:
+    envVarGroupNames:
       - codesync-secrets
     envVars:
       - key: PORT
@@ -65,7 +65,7 @@ services:
     plan: free
     dockerfilePath: ./services/collaboration-service/Dockerfile
     dockerContext: ./services/collaboration-service
-    envVarGroups:
+    envVarGroupNames:
       - codesync-secrets
     envVars:
       - key: PORT
@@ -77,7 +77,7 @@ services:
     plan: free
     dockerfilePath: ./services/websocket-service/Dockerfile
     dockerContext: ./services/websocket-service
-    envVarGroups:
+    envVarGroupNames:
       - codesync-secrets
     envVars:
       - key: PORT
@@ -89,7 +89,7 @@ services:
     plan: free
     dockerfilePath: ./services/ai-service/Dockerfile
     dockerContext: ./services/ai-service
-    envVarGroups:
+    envVarGroupNames:
       - codesync-secrets
     envVars:
       - key: PORT
@@ -101,7 +101,7 @@ services:
     plan: free
     dockerfilePath: ./services/execution-service/Dockerfile
     dockerContext: ./services/execution-service
-    envVarGroups:
+    envVarGroupNames:
       - codesync-secrets
     envVars:
       - key: PORT
@@ -113,7 +113,7 @@ services:
     plan: free
     dockerfilePath: ./services/analytics-service/Dockerfile
     dockerContext: ./services/analytics-service
-    envVarGroups:
+    envVarGroupNames:
       - codesync-secrets
     envVars:
       - key: PORT
@@ -125,7 +125,7 @@ services:
     plan: free
     dockerfilePath: ./services/notification-service/Dockerfile
     dockerContext: ./services/notification-service
-    envVarGroups:
+    envVarGroupNames:
       - codesync-secrets
     envVars:
       - key: PORT
@@ -137,7 +137,7 @@ services:
     plan: free
     dockerfilePath: ./services/history-service/Dockerfile
     dockerContext: ./services/history-service
-    envVarGroups:
+    envVarGroupNames:
       - codesync-secrets
     envVars:
       - key: PORT
