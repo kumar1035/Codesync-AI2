@@ -13,8 +13,8 @@ const PORT = process.env.PORT || 4006;
 
 app.use(helmet()); app.use(cors({ origin: '*' })); app.use(express.json()); app.use(morgan('combined'));
 
-const pool = new Pool({ connectionString: process.env.DATABASE_URL, max: 10, ssl: process.env.DATABASE_URL?.includes('supabase.co') ? { rejectUnauthorized: false } : false });
-const redis = new Redis({ host: process.env.REDIS_HOST || 'localhost', port: Number(process.env.REDIS_PORT) || 6379, password: process.env.REDIS_PASSWORD });
+const pool = new Pool({ connectionString: process.env.DATABASE_URL, max: 10, ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false });
+const redis = new Redis(process.env.REDIS_URL || `redis://${process.env.REDIS_HOST || 'localhost'}:${process.env.REDIS_PORT || 6379}`);
 const kafka = new Kafka({ clientId: 'analytics-service', brokers: [process.env.KAFKA_BROKER || 'localhost:9092'], logLevel: logLevel.WARN });
 
 interface AuthRequest extends Request { user?: { userId: string } }

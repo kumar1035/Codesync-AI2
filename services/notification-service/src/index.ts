@@ -18,7 +18,7 @@ const PORT = process.env.PORT || 4007;
 
 app.use(helmet()); app.use(cors({ origin: '*' })); app.use(express.json()); app.use(morgan('combined'));
 
-const pool = new Pool({ connectionString: process.env.DATABASE_URL, max: 10, ssl: process.env.DATABASE_URL?.includes('supabase.co') ? { rejectUnauthorized: false } : false });
+const pool = new Pool({ connectionString: process.env.DATABASE_URL, max: 10, ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false });
 const redisUrl = process.env.REDIS_URL || `redis://${process.env.REDIS_HOST || 'localhost'}:${process.env.REDIS_PORT || 6379}`;
 const pubClient = new Redis(redisUrl, { maxRetriesPerRequest: 3, enableReadyCheck: false });
 pubClient.on('error', (err) => console.warn('[notification-service] Redis pub error:', err.message));

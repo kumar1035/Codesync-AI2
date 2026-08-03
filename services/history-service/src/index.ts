@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 4008;
 
 app.use(helmet()); app.use(cors({ origin: '*' })); app.use(express.json()); app.use(morgan('combined'));
 
-const pool = new Pool({ connectionString: process.env.DATABASE_URL, max: 10, ssl: process.env.DATABASE_URL?.includes('supabase.co') ? { rejectUnauthorized: false } : false });
+const pool = new Pool({ connectionString: process.env.DATABASE_URL, max: 10, ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false });
 
 interface AuthRequest extends Request { user?: { userId: string } }
 function authenticate(req: AuthRequest, res: Response, next: NextFunction) {

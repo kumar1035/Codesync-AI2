@@ -24,7 +24,7 @@ pubClient.on('error', (err) => console.warn('[websocket-service] Redis pubClient
 subClient.on('error', (err) => console.warn('[websocket-service] Redis subClient error:', err.message));
 redis.on('error',     (err) => console.warn('[websocket-service] Redis error:', err.message));
 
-const pool = new Pool({ connectionString: process.env.DATABASE_URL, max: 10, ssl: process.env.DATABASE_URL?.includes('supabase.co') ? { rejectUnauthorized: false } : false });
+const pool = new Pool({ connectionString: process.env.DATABASE_URL, max: 10, ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false });
 
 const io = new Server(httpServer, {
   cors: { origin: '*', methods: ['GET', 'POST'] },

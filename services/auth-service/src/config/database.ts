@@ -5,7 +5,7 @@ export const pool = new Pool({
   max: 20,
   idleTimeoutMillis: 30000,
   connectionTimeoutMillis: 8000,
-  ssl: process.env.DATABASE_URL?.includes('supabase.co')
+  ssl: process.env.NODE_ENV === 'production'
     ? { rejectUnauthorized: false }
     : false,
 });

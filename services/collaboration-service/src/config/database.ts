@@ -3,7 +3,7 @@ import { Pool } from 'pg';
 export const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
   max: 20,
-  ssl: process.env.DATABASE_URL?.includes('supabase.co') ? { rejectUnauthorized: false } : false,
+  ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
 });
 
 export async function connectDB() {

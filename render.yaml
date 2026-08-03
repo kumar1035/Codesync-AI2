@@ -1,0 +1,144 @@
+envVarGroups:
+  - name: codesync-secrets
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: REDIS_URL
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: JWT_REFRESH_SECRET
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: JWT_EXPIRES_IN
+        value: 15m
+      - key: JWT_REFRESH_EXPIRES_IN
+        value: 7d
+      - key: AI_PROVIDER
+        value: openai
+      - key: NODE_ENV
+        value: production
+
+services:
+  - name: codesync-gateway
+    type: web
+    runtime: docker
+    plan: free
+    dockerfilePath: ./services/api-gateway/Dockerfile
+    dockerContext: ./services/api-gateway
+    envVarGroups:
+      - codesync-secrets
+    envVars:
+      - key: PORT
+        value: "4000"
+      - key: AUTH_SERVICE_URL
+        value: https://codesync-auth.onrender.com
+      - key: COLLABORATION_SERVICE_URL
+        value: https://codesync-collaboration.onrender.com
+      - key: AI_SERVICE_URL
+        value: https://codesync-ai.onrender.com
+      - key: EXECUTION_SERVICE_URL
+        value: https://codesync-execution.onrender.com
+      - key: ANALYTICS_SERVICE_URL
+        value: https://codesync-analytics.onrender.com
+      - key: HISTORY_SERVICE_URL
+        value: https://codesync-history.onrender.com
+      - key: CORS_ORIGIN
+        sync: false
+
+  - name: codesync-auth
+    type: web
+    runtime: docker
+    plan: free
+    dockerfilePath: ./services/auth-service/Dockerfile
+    dockerContext: ./services/auth-service
+    envVarGroups:
+      - codesync-secrets
+    envVars:
+      - key: PORT
+        value: "4001"
+
+  - name: codesync-collaboration
+    type: web
+    runtime: docker
+    plan: free
+    dockerfilePath: ./services/collaboration-service/Dockerfile
+    dockerContext: ./services/collaboration-service
+    envVarGroups:
+      - codesync-secrets
+    envVars:
+      - key: PORT
+        value: "4002"
+
+  - name: codesync-websocket
+    type: web
+    runtime: docker
+    plan: free
+    dockerfilePath: ./services/websocket-service/Dockerfile
+    dockerContext: ./services/websocket-service
+    envVarGroups:
+      - codesync-secrets
+    envVars:
+      - key: PORT
+        value: "4003"
+
+  - name: codesync-ai
+    type: web
+    runtime: docker
+    plan: free
+    dockerfilePath: ./services/ai-service/Dockerfile
+    dockerContext: ./services/ai-service
+    envVarGroups:
+      - codesync-secrets
+    envVars:
+      - key: PORT
+        value: "4004"
+
+  - name: codesync-execution
+    type: web
+    runtime: docker
+    plan: free
+    dockerfilePath: ./services/execution-service/Dockerfile
+    dockerContext: ./services/execution-service
+    envVarGroups:
+      - codesync-secrets
+    envVars:
+      - key: PORT
+        value: "4005"
+
+  - name: codesync-analytics
+    type: web
+    runtime: docker
+    plan: free
+    dockerfilePath: ./services/analytics-service/Dockerfile
+    dockerContext: ./services/analytics-service
+    envVarGroups:
+      - codesync-secrets
+    envVars:
+      - key: PORT
+        value: "4006"
+
+  - name: codesync-notification
+    type: web
+    runtime: docker
+    plan: free
+    dockerfilePath: ./services/notification-service/Dockerfile
+    dockerContext: ./services/notification-service
+    envVarGroups:
+      - codesync-secrets
+    envVars:
+      - key: PORT
+        value: "4007"
+
+  - name: codesync-history
+    type: web
+    runtime: docker
+    plan: free
+    dockerfilePath: ./services/history-service/Dockerfile
+    dockerContext: ./services/history-service
+    envVarGroups:
+      - codesync-secrets
+    envVars:
+      - key: PORT
+        value: "4008"
