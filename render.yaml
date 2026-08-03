@@ -40,9 +40,11 @@ services:
       - key: EXECUTION_SERVICE_URL
         value: https://codesync-execution.onrender.com
       - key: ANALYTICS_SERVICE_URL
-        value: https://codesync-analytics.onrender.com
+        value: https://codesync-analytics-j0kc.onrender.com
       - key: HISTORY_SERVICE_URL
         value: https://codesync-history.onrender.com
+      - key: NOTIFICATION_SERVICE_URL
+        value: https://codesync-notification-z3qx.onrender.com
       - key: CORS_ORIGIN
         sync: false
 
