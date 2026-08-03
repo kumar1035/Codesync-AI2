@@ -32,13 +32,13 @@ services:
       - key: PORT
         value: "4000"
       - key: AUTH_SERVICE_URL
-        value: https://codesync-auth.onrender.com
+        value: https://codesync-auth-64qg.onrender.com
       - key: COLLABORATION_SERVICE_URL
         value: https://codesync-collaboration.onrender.com
       - key: AI_SERVICE_URL
         value: https://codesync-ai.onrender.com
       - key: EXECUTION_SERVICE_URL
-        value: https://codesync-execution.onrender.com
+        value: https://codesync-execution-5ajh.onrender.com
       - key: ANALYTICS_SERVICE_URL
         value: https://codesync-analytics-j0kc.onrender.com
       - key: HISTORY_SERVICE_URL
