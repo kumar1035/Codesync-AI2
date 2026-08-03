@@ -27,9 +27,8 @@ services:
     plan: free
     dockerfilePath: ./services/api-gateway/Dockerfile
     dockerContext: ./services/api-gateway
-    envVarGroupNames:
-      - codesync-secrets
     envVars:
+      - fromGroup: codesync-secrets
       - key: PORT
         value: "4000"
       - key: AUTH_SERVICE_URL
@@ -53,9 +52,8 @@ services:
     plan: free
     dockerfilePath: ./services/auth-service/Dockerfile
     dockerContext: ./services/auth-service
-    envVarGroupNames:
-      - codesync-secrets
     envVars:
+      - fromGroup: codesync-secrets
       - key: PORT
         value: "4001"
 
@@ -65,9 +63,8 @@ services:
     plan: free
     dockerfilePath: ./services/collaboration-service/Dockerfile
     dockerContext: ./services/collaboration-service
-    envVarGroupNames:
-      - codesync-secrets
     envVars:
+      - fromGroup: codesync-secrets
       - key: PORT
         value: "4002"
 
@@ -77,9 +74,8 @@ services:
     plan: free
     dockerfilePath: ./services/websocket-service/Dockerfile
     dockerContext: ./services/websocket-service
-    envVarGroupNames:
-      - codesync-secrets
     envVars:
+      - fromGroup: codesync-secrets
       - key: PORT
         value: "4003"
 
@@ -89,9 +85,8 @@ services:
     plan: free
     dockerfilePath: ./services/ai-service/Dockerfile
     dockerContext: ./services/ai-service
-    envVarGroupNames:
-      - codesync-secrets
     envVars:
+      - fromGroup: codesync-secrets
       - key: PORT
         value: "4004"
 
@@ -101,9 +96,8 @@ services:
     plan: free
     dockerfilePath: ./services/execution-service/Dockerfile
     dockerContext: ./services/execution-service
-    envVarGroupNames:
-      - codesync-secrets
     envVars:
+      - fromGroup: codesync-secrets
       - key: PORT
         value: "4005"
 
@@ -113,9 +107,8 @@ services:
     plan: free
     dockerfilePath: ./services/analytics-service/Dockerfile
     dockerContext: ./services/analytics-service
-    envVarGroupNames:
-      - codesync-secrets
     envVars:
+      - fromGroup: codesync-secrets
       - key: PORT
         value: "4006"
 
@@ -125,9 +118,8 @@ services:
     plan: free
     dockerfilePath: ./services/notification-service/Dockerfile
     dockerContext: ./services/notification-service
-    envVarGroupNames:
-      - codesync-secrets
     envVars:
+      - fromGroup: codesync-secrets
       - key: PORT
         value: "4007"
 
@@ -137,8 +129,7 @@ services:
     plan: free
     dockerfilePath: ./services/history-service/Dockerfile
     dockerContext: ./services/history-service
-    envVarGroupNames:
-      - codesync-secrets
     envVars:
+      - fromGroup: codesync-secrets
       - key: PORT
         value: "4008"
